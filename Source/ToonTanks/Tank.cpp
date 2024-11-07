@@ -4,9 +4,9 @@
 #include "Tank.h"
 #include "GameFramework/SpringArmComponent.h"
 #include "Camera/CameraComponent.h"
-#include "../../../../../Program Files/Epic Games/UE_5.3/Engine/Plugins/EnhancedInput/Source/EnhancedInput/Public/EnhancedInputComponent.h"
-#include "../../../../../Program Files/Epic Games/UE_5.3/Engine/Plugins/EnhancedInput/Source/EnhancedInput/Public/EnhancedInputSubsystems.h"
-#include "../../../../../Program Files/Epic Games/UE_5.3/Engine/Plugins/EnhancedInput/Source/EnhancedInput/Public/InputMappingContext.h"
+#include "EnhancedInput/Public/EnhancedInputComponent.h"
+#include "EnhancedInput/Public/EnhancedInputSubsystems.h"
+#include "EnhancedInput/Public/InputMappingContext.h"
 
 ATank::ATank()
 {
