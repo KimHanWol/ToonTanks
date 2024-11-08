@@ -22,7 +22,7 @@ void ATank::BeginPlay()
 {
 	Super::BeginPlay();
 
-	const APlayerController* const PlayerController = Cast<APlayerController>(GetController());
+	PlayerController = Cast<APlayerController>(GetController());
 	if (IsValid(PlayerController) == false)
 	{
 		ensure(false);
@@ -37,6 +37,39 @@ void ATank::BeginPlay()
 		{
 			EnhancedInputSubsys->AddMappingContext(DefaultContext, 0);
 		}
+	}
+}
+
+void ATank::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	if (IsValid(PlayerController) == false)
+	{
+		ensure(false);
+		return;
+	}
+
+	FHitResult HitResult;
+	bool bHit = PlayerController->GetHitResultUnderCursor(
+		ECC_Visibility, 
+		false, 
+		HitResult
+		);
+
+	if (bHit == true)
+	{
+		DrawDebugSphere(
+			GetWorld(), 
+			HitResult.ImpactPoint, 
+			25.f,
+			12,
+			FColor::Red,
+			false,
+			-1.f
+			);
+
+		RotateTurret(HitResult.ImpactPoint);
 	}
 }
 

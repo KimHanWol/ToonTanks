@@ -21,12 +21,14 @@ public:
 protected:
 
 	virtual void BeginPlay() override;
+	virtual void Tick(float DeltaTime) override;
 
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void Move(const struct FInputActionValue& Value);
 	void Turn(const struct FInputActionValue& Value);
+
 
 private:
 
@@ -54,4 +56,6 @@ private:
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurnRate = 45.f;
 
+	UPROPERTY(Transient)
+	APlayerController* PlayerController;
 };
