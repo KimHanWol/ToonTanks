@@ -26,6 +26,7 @@ protected:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
 	void Move(const struct FInputActionValue& Value);
+	void Turn(const struct FInputActionValue& Value);
 
 private:
 
@@ -40,5 +41,17 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
 	class UInputAction* MoveAction;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
+	class UInputAction* TurnAction;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 200.f;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float MoveSpeed = 200.f;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float TurnRate = 45.f;
 
 };

@@ -37,7 +37,4 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	USceneComponent* ProjectileSpawnPoint;
-
-	UPROPERTY(EditAnywhere)
-	float Speed = 400.f;
 };
