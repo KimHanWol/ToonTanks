@@ -47,6 +47,9 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
 	class UInputAction* TurnAction;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
+	class UInputAction* FireAction;
+
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float Speed = 200.f;
 

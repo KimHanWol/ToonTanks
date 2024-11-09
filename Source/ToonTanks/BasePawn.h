@@ -18,6 +18,7 @@ public:
 protected:
 
 	void RotateTurret(const FVector& LookAtTarget);
+	void Fire();
 
 private:
 
@@ -32,4 +33,7 @@ private:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Components", meta = (AllowPrivateAccess = true))
 	USceneComponent* ProjectileSpawnPoint;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Combet")
+	TSubclassOf<class AProjectile> ProjectileClass;
 };

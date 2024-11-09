@@ -33,7 +33,7 @@ void ABasePawn::RotateTurret(const FVector& LookAtTarget)
 		return;
 	}
 
-	const FVector& ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
+	FVector ToTarget = LookAtTarget - TurretMesh->GetComponentLocation();
 	FRotator LookAtRotation = FRotator(0.f, ToTarget.Rotation().Yaw, 0.f); //터렛이 아래를 바라보지 않게 하기 위해서 Yaw 만 적용
 
 	TurretMesh->SetWorldRotation(FMath::RInterpTo(TurretMesh->GetComponentRotation(), LookAtRotation, UGameplayStatics::GetWorldDeltaSeconds(this), 25.f));
@@ -41,16 +41,14 @@ void ABasePawn::RotateTurret(const FVector& LookAtTarget)
 
 void ABasePawn::Fire()
 {
-	if (IsValid(ProjectileSpawnPoint) == false)
-	{
-		ensure(false);
-		return;
-	}
+	DrawDebugSphere(
+		GetWorld(), 
+		ProjectileSpawnPoint->GetComponentLocation(),
+		30.f,
+		12,
+		FColor::Red
+		);
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), ANSI_TO_TCHAR(__FUNCTION__));
 
-	const FVector& Location = ProjectileSpawnPoint->GetComponentLocation();
-	const FRotator& Rotation= ProjectileSpawnPoint->GetComponentRotation();
-
-	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, Rotation);
+	//SpawnActor<AProjectile>(ProjectileClass);
 }
