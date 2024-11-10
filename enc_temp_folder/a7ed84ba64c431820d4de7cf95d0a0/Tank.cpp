@@ -100,3 +100,11 @@ void ATank::Turn(const FInputActionValue& Value)
 	DeltaRotation.Yaw = Value.Get<FVector2D>().Y * UGameplayStatics::GetWorldDeltaSeconds(this) * TurnRate;
 	AddActorLocalRotation(DeltaRotation);
 }
+
+void ATank::HandleDestruction()
+{
+	Super::HandleDestruction();
+
+	SetActorHiddenInGame(true);
+	SetActorTickEnabled(false);
+}

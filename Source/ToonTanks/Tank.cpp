@@ -52,23 +52,13 @@ void ATank::Tick(float DeltaTime)
 
 	FHitResult HitResult;
 	bool bHit = PlayerController->GetHitResultUnderCursor(
-		ECC_Visibility, 
-		false, 
+		ECC_Visibility,
+		false,
 		HitResult
-		);
+	);
 
 	if (bHit == true)
 	{
-		DrawDebugSphere(
-			GetWorld(), 
-			HitResult.ImpactPoint, 
-			25.f,
-			12,
-			FColor::Red,
-			false,
-			-1.f
-			);
-
 		RotateTurret(HitResult.ImpactPoint);
 	}
 }

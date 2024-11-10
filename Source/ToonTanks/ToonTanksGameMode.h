@@ -24,6 +24,9 @@ public:
 
 private:
 
+	UPROPERTY(Transient)
 	class ATank* Tank;
 
+	UPROPERTY(Transient)
+	class AToonTanksPlayerController* ToonTanksPlayerController;
 };
