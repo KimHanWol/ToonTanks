@@ -29,11 +29,6 @@ protected:
 	void Move(const struct FInputActionValue& Value);
 	void Turn(const struct FInputActionValue& Value);
 
-public:
-
-	virtual void HandleDestruction() override;
-
-	class APlayerController* GetTankPlayerController() const { return PlayerController; }
 
 private:
 
@@ -54,6 +49,9 @@ private:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
 	class UInputAction* FireAction;
+
+	UPROPERTY(EditAnywhere, Category = "Movement")
+	float Speed = 200.f;
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MoveSpeed = 200.f;
