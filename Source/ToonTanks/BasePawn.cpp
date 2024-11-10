@@ -47,10 +47,9 @@ void ABasePawn::Fire()
 		return;
 	}
 
-	UE_LOG(LogTemp, Warning, TEXT("%s"), ANSI_TO_TCHAR(__FUNCTION__));
-
 	const FVector& Location = ProjectileSpawnPoint->GetComponentLocation();
 	const FRotator& Rotation= ProjectileSpawnPoint->GetComponentRotation();
 
-	GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, Rotation);
+	AProjectile* SpawnedProjectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass, Location, Rotation);
+	SpawnedProjectile->SetOwner(this);
 }

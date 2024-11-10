@@ -14,7 +14,17 @@ class TOONTANKS_API AProjectile : public AActor
 public:	
 	AProjectile();
 
+protected:
+	
+	virtual void BeginPlay() override;
+
+	UFUNCTION()
+	void OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+
 private:
+
+	UPROPERTY(EditDefaultsOnly, Category = Combat)
+	float Damage = 50.f;
 
 	UPROPERTY(EditDefaultsOnly, Category = Combat)
 	class UStaticMeshComponent* ProjectileMesh;
