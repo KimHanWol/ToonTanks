@@ -18,9 +18,16 @@ protected:
 
 	virtual void BeginPlay() override;
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void BPStartGame();
+
 public:
 	
 	void ActorDied(AActor* DeadActor);
+
+private:
+
+	void HandleGameStart();
 
 private:
 
@@ -29,4 +36,8 @@ private:
 
 	UPROPERTY(Transient)
 	class AToonTanksPlayerController* ToonTanksPlayerController;
+
+	UPROPERTY(EditDefaultsOnly)
+	float StartDelay = 3.f;
+
 };
