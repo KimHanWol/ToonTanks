@@ -35,17 +35,16 @@ private:
 
 private:
 
-	UPROPERTY(Transient)
-	class ATank* Tank;
-
-	UPROPERTY(Transient)
-	class AToonTanksPlayerController* ToonTanksPlayerController;
-
+	//Data
 	UPROPERTY(EditDefaultsOnly)
 	float StartDelay = 3.f;
 
 	UPROPERTY(Transient)
 	int32 TargetTowerCount = 0;
 
+	UPROPERTY(Transient)
+	class ATank* Tank;
 
+	UPROPERTY(Transient)
+	class AToonTanksPlayerController* ToonTanksPlayerController;
 };

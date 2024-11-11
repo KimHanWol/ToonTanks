@@ -24,13 +24,12 @@ protected:
 
 private:
 
-	//Data
+	UPROPERTY(Transient)
+	class AToonTanksGameMode* ToonTanksGameMode;
+
 	UPROPERTY(EditDefaultsOnly)
 	float MaxHealth = 100.f;
 	
 	UPROPERTY(EditDefaultsOnly)
 	float CurrentHealth;
-
-	UPROPERTY(Transient)
-	class AToonTanksGameMode* ToonTanksGameMode;
 };

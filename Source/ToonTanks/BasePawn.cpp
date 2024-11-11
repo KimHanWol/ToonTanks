@@ -38,6 +38,24 @@ void ABasePawn::HandleDestruction()
 			);
 	}
 
+	if (IsValid(DeathSound) == true)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this, 
+			DeathSound, 
+			GetActorLocation(), 
+			GetActorRotation()
+			);
+	}
+
+	if (IsValid(DeathCameraShakeClass) == true)
+	{
+		if (IsValid(GetWorld()) == true && IsValid(GetWorld()->GetFirstPlayerController()) == true)
+		{
+			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
+		}
+	}
+
 	// TODO: Visual/sound effect
 }
 

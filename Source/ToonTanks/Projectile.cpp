@@ -26,6 +26,16 @@ void AProjectile::BeginPlay()
 	Super::BeginPlay();
 
 	ProjectileMesh->OnComponentHit.AddDynamic(this, &AProjectile::OnHit);
+
+	if (IsValid(LaunchSound) == true)
+	{
+		UGameplayStatics::PlaySoundAtLocation(
+			this, 
+			LaunchSound, 
+			GetActorLocation(), 
+			GetActorRotation()
+			);
+	}
 }
 
 void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
@@ -60,6 +70,24 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 				GetActorLocation(), 
 				GetActorRotation()
 				);
+		}
+
+		if (IsValid(HitSound) == true)
+		{
+			UGameplayStatics::PlaySoundAtLocation(
+				this, 
+				HitSound, 
+				GetActorLocation(), 
+				GetActorRotation()
+				);
+		}
+
+		if (IsValid(HitCameraShakeClass) == true)
+		{
+			if (IsValid(GetWorld()) == true && IsValid(GetWorld()->GetFirstPlayerController()) == true)
+			{
+				GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(HitCameraShakeClass);
+			}
 		}
 
 		Destroy();

@@ -37,7 +37,12 @@ public:
 
 private:
 
-	//Input
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class USpringArmComponent* SpringArm;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	class UCameraComponent* Camera;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
 	class UInputMappingContext* DefaultContext;
 
@@ -50,7 +55,6 @@ private:
 	UPROPERTY(EditDefaultsOnly, Category = "Inputs")
 	class UInputAction* FireAction;
 
-	//Data
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float MoveSpeed = 200.f;
 
@@ -59,11 +63,4 @@ private:
 
 	UPROPERTY(Transient)
 	APlayerController* PlayerController;
-
-	//Component
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	class USpringArmComponent* SpringArm;
-
-	UPROPERTY(VisibleAnywhere, Category = "Components")
-	class UCameraComponent* Camera;
 };
