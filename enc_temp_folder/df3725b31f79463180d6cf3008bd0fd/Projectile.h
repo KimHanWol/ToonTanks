@@ -23,18 +23,12 @@ protected:
 
 private:
 
-	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	UPROPERTY(EditDefaultsOnly, Category = Combat)
 	float Damage = 50.f;
 
-	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	UPROPERTY(EditDefaultsOnly, Category = Combat)
 	class UStaticMeshComponent* ProjectileMesh;
 
-	UPROPERTY(EditAnywhere, Category = "Combat")
-	class UParticleSystem* HitParticles;
-
-	UPROPERTY(VisibleAnywhere, Category = "Combat")
-	class UParticleSystemComponent* ParticleSystemComponent;
-
-	UPROPERTY(VisibleAnywhere, Category = "Movement")
+	UPROPERTY(VisibleAnywhere, Category = Movement)
 	class UProjectileMovementComponent* ProjectileMovementComponent;
 };

@@ -1,10 +1,8 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
+#include "Projectile.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
-#include "Particles/ParticleSystemComponent.h"
-#include "Particles/ParticleSystem.h"
-#include "Projectile.h"
 
 AProjectile::AProjectile()
 {
@@ -16,9 +14,6 @@ AProjectile::AProjectile()
 	ProjectileMovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Projectile Movement Component"));
 	ProjectileMovementComponent->MaxSpeed = 1300.f;
 	ProjectileMovementComponent->InitialSpeed = 1300.f;
-
-	ParticleSystemComponent = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Smoke Trail"));
-	ParticleSystemComponent->SetupAttachment(RootComponent);
 }
 
 void AProjectile::BeginPlay()
@@ -34,7 +29,6 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	if (IsValid(InOwner) == false)
 	{
 		ensure(false);
-		Destroy();
 		return;
 	}
 
@@ -42,7 +36,6 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	if (IsValid(OwnerController) == false)
 	{
 		ensure(false);
-		Destroy();
 		return;
 	}
 
@@ -51,17 +44,7 @@ void AProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPrimi
 	if (IsValid(OtherActor) == true && OtherActor != this && OtherActor != InOwner)
 	{
 		UGameplayStatics::ApplyDamage(OtherActor, Damage, OwnerController, InOwner, DamageTypeClass);
-
-		if (IsValid(HitParticles) == true)
-		{
-			UGameplayStatics::SpawnEmitterAtLocation(
-				this, 
-				HitParticles, 
-				GetActorLocation(), 
-				GetActorRotation()
-				);
-		}
-
-		Destroy();
 	}
+
+	Destroy();
 }
