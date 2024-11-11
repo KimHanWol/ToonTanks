@@ -7,10 +7,8 @@
 #include "Particles/ParticleSystem.h"
 #include "Projectile.h"
 
-// Sets default values
 ABasePawn::ABasePawn()
 {
- 	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
 	CupsuleComp = CreateDefaultSubobject<UCapsuleComponent>(TEXT("Capsule Collider"));
@@ -55,8 +53,6 @@ void ABasePawn::HandleDestruction()
 			GetWorld()->GetFirstPlayerController()->ClientStartCameraShake(DeathCameraShakeClass);
 		}
 	}
-
-	// TODO: Visual/sound effect
 }
 
 void ABasePawn::RotateTurret(const FVector& LookAtTarget)
