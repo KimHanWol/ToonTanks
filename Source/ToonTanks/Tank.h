@@ -35,6 +35,8 @@ public:
 
 	class APlayerController* GetTankPlayerController() const { return PlayerController; }
 
+	bool IsAlive() { return bAlive; }
+
 private:
 
 	//Input
@@ -56,6 +58,9 @@ private:
 
 	UPROPERTY(EditAnywhere, Category = "Movement")
 	float TurnRate = 45.f;
+
+	UPROPERTY(Transient)
+	bool bAlive = true;
 
 	UPROPERTY(Transient)
 	APlayerController* PlayerController;
