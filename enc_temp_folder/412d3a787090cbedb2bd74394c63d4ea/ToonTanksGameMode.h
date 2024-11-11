@@ -21,13 +21,9 @@ protected:
 	UFUNCTION(BlueprintImplementableEvent)
 	void BPStartGame();
 
-	UFUNCTION(BlueprintImplementableEvent)
-	void BPGameOver(bool bWonGame);
-
 public:
 	
 	void ActorDied(AActor* DeadActor);
-	int32 GetTargetTowerCount();
 
 private:
 
@@ -43,9 +39,5 @@ private:
 
 	UPROPERTY(EditDefaultsOnly)
 	float StartDelay = 3.f;
-
-	UPROPERTY(Transient)
-	int32 TargetTowerCount = 0;
-
 
 };
